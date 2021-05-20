@@ -1,0 +1,193 @@
+﻿@model Quote
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+}
+<form asp-controller="Quote" asp-action="Create" method="post">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="row row-one">
+                    <div class="col-md-6">
+                        <label>How Would you like to ship?<i class="fas fa-info-circle"></i></label>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <select asp-for="Mode" asp-items="Model.ModeList"></select>
+                            </div>
+                            <div class="col-md-6">
+                                <select asp-for="MovementType" asp-items="Model.MovementTypeList"></select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <label>Do you preffered incoterm?<i class="fas fa-info-circle"></i></label>
+                        <select asp-for="Incoterm" asp-items="Model.IncotermList"></select>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="row row-one">
+                    <div class="col-md-6">
+                        <label>Where are you shipping from? <i class="fas fa-info-circle"></i> </label>
+                        <div class="row">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.OriginCountry, htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-6">
+                                    @Html.EditorFor(model => model.OriginCountry, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.OriginCountry, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.OriginCity, htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-6">
+                                    @Html.EditorFor(model => model.OriginCity, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.OriginCity, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <label>Where are you shipping to ? <i class="fas fa-info-circle"></i></label>
+                            <div class="row">
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.OriginCity, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    <div class="col-md-3">
+                                        @Html.EditorFor(model => model.OriginCity, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.OriginCity, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.DestinationCity, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    <div class="col-md-3">
+                                        @Html.EditorFor(model => model.DestinationCity, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.DestinationCity, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.DestinationCountry, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    <div class="col-md-3">
+                                        @Html.EditorFor(model => model.DestinationCountry, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.DestinationCountry, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.Zip, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    <div class="col-md-3">
+                                        @Html.EditorFor(model => model.Zip, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.Zip, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="row row-one">
+                        <label>What are you shipping?<i class="fas fa-info-circle"></i></label>
+                        <div class="col-md-2">
+                            <select asp-for="PackageType" asp-items="Model.PackageTypeList"></select>
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Quantity, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-1">
+                                @Html.EditorFor(model => model.Quantity, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.Quantity, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Lenght, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-1">
+                                @Html.EditorFor(model => model.Lenght, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.Quantity, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Width, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-1">
+                                @Html.EditorFor(model => model.Width, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.Width, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Height, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-1">
+                                @Html.EditorFor(model => model.Height, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.Height, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.UnitHeight, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-1">
+                                @Html.EditorFor(model => model.UnitHeight, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.UnitHeight, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Weight, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-1">
+                                @Html.EditorFor(model => model.Weight, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.Weight, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.UnitWeight, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-1">
+                                @Html.EditorFor(model => model.UnitWeight, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.UnitWeight, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.CargoDescription, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-2">
+                                @Html.EditorFor(model => model.CargoDescription, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.CargoDescription, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="row">
+                        <div class="col-md-2">
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                                <label class="form-check-label" for="flexRadioDefault1">
+                                    Hazardous Meterial
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                                <label class="form-check-label" for="flexRadioDefault1">
+                                    Event Cargo
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                                <label class="form-check-label" for="flexRadioDefault1">
+                                    Personal goods
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <select asp-for="Currency" asp-items="Model.CurrencyList"></select>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <button type="submit" class="btn btn-primary btn-lg">Get Quote</button>
+                </div>
+            </div>
+        </div>
+        <div>
+            @Html.ActionLink("Back to List", "List")
+        </div>
+</form>
+
