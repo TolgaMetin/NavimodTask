@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -16,6 +18,8 @@ namespace Navimod.Web.Models
         public string OriginCity { get; set; }
         public string DestinationCountry { get; set; }
         public string DestinationCity { get; set; }
+
+        [Required(ErrorMessage = "Bos Bırakılamaz")]
         public int Zip { get; set; }
         public string PackageType { get; set; }
         public int Quantity { get; set; }
@@ -27,6 +31,13 @@ namespace Navimod.Web.Models
         public string UnitWeight { get; set; }
         public string CargoDescription { get; set; }
         public string Currency { get; set; }
+
+        [DisplayName("Hazardous Material")]
+        public bool IsHazardous { get; set; }
+        [DisplayName("Event Cargo")]
+        public bool IsEventCargo { get; set; }
+        [DisplayName("Personal Goods")]
+        public bool IsPersonalGoods { get; set; }
 
         public List<SelectListItem> ModeList = new List<SelectListItem>()
         {

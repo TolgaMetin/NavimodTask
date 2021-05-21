@@ -36,16 +36,19 @@ namespace Navimod.Web.Models
                             quote.OriginCity = dataReader["OriginCity"].ToString();
                             quote.DestinationCountry = dataReader["DestinationCountry"].ToString();
                             quote.DestinationCity = dataReader["DestinationCity"].ToString();
-                            quote.Zip = Convert.ToInt32(dataReader["Zip"]);
+                            quote.Zip = Convert.ToInt32(dataReader["Zip"] != DBNull.Value ? dataReader["Zip"] :0);
                             quote.PackageType = dataReader["PackageType"].ToString();
-                            quote.Quantity = Convert.ToInt32(dataReader["Quantity"]);
-                            quote.Lenght = Convert.ToInt32(dataReader["Lenght"]);
-                            quote.Width = Convert.ToInt32(dataReader["Width"]);
-                            quote.Height = Convert.ToInt32(dataReader["Height"]);
+                            quote.Quantity = Convert.ToInt32(dataReader["Quantity"] != DBNull.Value ? dataReader["Quantity"] : 0);
+                            quote.Lenght = Convert.ToInt32(dataReader["Lenght"] != DBNull.Value ? dataReader["Lenght"] : 0);
+                            quote.Width = Convert.ToInt32(dataReader["Width"] != DBNull.Value ? dataReader["Width"] : 0);
+                            quote.Height = Convert.ToInt32(dataReader["Height"] != DBNull.Value ? dataReader["Height"] : 0);
                             quote.UnitHeight = dataReader["UnitHeight"].ToString();
-                            quote.Weight = Convert.ToInt32(dataReader["Weight"]);
+                            quote.Weight = Convert.ToInt32(dataReader["Weight"] != DBNull.Value ? dataReader["Weight"] : 0);
                             quote.UnitWeight = dataReader["UnitWeight"].ToString();
                             quote.CargoDescription = dataReader["CargoDescription"].ToString();
+                            quote.IsHazardous = Convert.ToBoolean(dataReader["IsHazardous"] != DBNull.Value ? dataReader["IsHazardous"] : 0);
+                            quote.IsEventCargo = Convert.ToBoolean(dataReader["IsEventCargo"] != DBNull.Value ? dataReader["IsEventCargo"] : 0);
+                            quote.IsPersonalGoods = Convert.ToBoolean(dataReader["IsPersonalGoods"] != DBNull.Value ? dataReader["IsPersonalGoods"] : 0);
                             quote.Currency = dataReader["Currency"].ToString();
 
                             quotes.Add(quote);
@@ -55,7 +58,6 @@ namespace Navimod.Web.Models
                 }
                 return quotes;
             }
-
         }
         public string SaveQuote(Quote quote)
         {
@@ -98,14 +100,10 @@ namespace Navimod.Web.Models
                     command.Parameters.Add(sqlParameterDestinationCountry);
 
                     SqlParameter sqlParameterDestinationCity = new SqlParameter();
-                    sqlParameterDestinationCity.ParameterName = "@DestinationCity";
-                    sqlParameterDestinationCity.Value = quote.DestinationCity != null ? quote.DestinationCity : DBNull.Value;
-                    command.Parameters.Add(sqlParameterDestinationCity);
+                    command.Parameters.AddWithValue("@DestinationCity", quote.DestinationCity != null ? quote.DestinationCity : DBNull.Value);
 
                     SqlParameter sqlParameterZip = new SqlParameter();
-                    sqlParameterZip.ParameterName = "@Zip";
-                    sqlParameterZip.Value = quote.Zip != 0 ? quote.Zip : 0;
-                    command.Parameters.Add(sqlParameterZip);
+                    command.Parameters.AddWithValue("@Zip", quote.Zip != 0 ? quote.Zip : 0);
 
                     SqlParameter sqlParameterPackageType = new SqlParameter();
                     sqlParameterPackageType.ParameterName = "@PackageType";
@@ -113,24 +111,16 @@ namespace Navimod.Web.Models
                     command.Parameters.Add(sqlParameterPackageType);
 
                     SqlParameter sqlParameterQuantity = new SqlParameter();
-                    sqlParameterQuantity.ParameterName = "@Quantity";
-                    sqlParameterQuantity.Value = quote.Quantity != 0 ? quote.Quantity : 0;
-                    command.Parameters.Add(sqlParameterQuantity);
+                    command.Parameters.AddWithValue("@Quantity", quote.Quantity != 0 ? quote.Quantity : 0);
 
                     SqlParameter sqlParameterLenght = new SqlParameter();
-                    sqlParameterLenght.ParameterName = "@Lenght";
-                    sqlParameterLenght.Value = quote.Lenght != 0 ? quote.Lenght : 0;
-                    command.Parameters.Add(sqlParameterLenght);
+                    command.Parameters.AddWithValue("@Lenght", quote.Lenght != 0 ? quote.Lenght : 0);
 
                     SqlParameter sqlParameterWidth = new SqlParameter();
-                    sqlParameterWidth.ParameterName = "@Width";
-                    sqlParameterWidth.Value = quote.Width != 0 ? quote.Width : 0;
-                    command.Parameters.Add(sqlParameterWidth);
+                    command.Parameters.AddWithValue("@Width", quote.Width != 0 ? quote.Width : 0);
 
                     SqlParameter sqlParameterHeight = new SqlParameter();
-                    sqlParameterHeight.ParameterName = "@Height";
-                    sqlParameterHeight.Value = quote.Height != 0 ? quote.Height : 0;
-                    command.Parameters.Add(sqlParameterHeight);
+                    command.Parameters.AddWithValue("@Height", quote.Height != 0 ? quote.Height : 0);
 
                     SqlParameter sqlParameterUnitHeight = new SqlParameter();
                     sqlParameterUnitHeight.ParameterName = "@UnitHeight";
@@ -138,9 +128,7 @@ namespace Navimod.Web.Models
                     command.Parameters.Add(sqlParameterUnitHeight);
 
                     SqlParameter sqlParameterWeight = new SqlParameter();
-                    sqlParameterWeight.ParameterName = "@Weight";
-                    sqlParameterWeight.Value = quote.Weight != 0 ? quote.Weight : 0;
-                    command.Parameters.Add(sqlParameterWeight);
+                    command.Parameters.AddWithValue("@Weight", quote.Weight != 0 ? quote.Weight : 0);
 
                     SqlParameter sqlParameterUnitWeight = new SqlParameter();
                     sqlParameterUnitWeight.ParameterName = "@UnitWeight";
@@ -151,6 +139,21 @@ namespace Navimod.Web.Models
                     sqlParameterCargoDescription.ParameterName = "@CargoDescription";
                     sqlParameterCargoDescription.Value = quote.CargoDescription != null ? quote.CargoDescription : DBNull.Value;
                     command.Parameters.Add(sqlParameterCargoDescription);
+
+                    SqlParameter sqlParameterIsHazardous= new SqlParameter();
+                    sqlParameterIsHazardous.ParameterName = "@IsHazardous";
+                    sqlParameterIsHazardous.Value = quote.IsHazardous;
+                    command.Parameters.Add(sqlParameterIsHazardous);
+
+                    SqlParameter sqlParameterIsEventCargo = new SqlParameter();
+                    sqlParameterIsEventCargo.ParameterName = "@IsEventCargo";
+                    sqlParameterIsEventCargo.Value = quote.IsEventCargo;
+                    command.Parameters.Add(sqlParameterIsEventCargo);
+
+                    SqlParameter sqlParameterIsPersonalGoods = new SqlParameter();
+                    sqlParameterIsPersonalGoods.ParameterName = "@IsPersonalGoods";
+                    sqlParameterIsPersonalGoods.Value = quote.IsPersonalGoods;
+                    command.Parameters.Add(sqlParameterIsPersonalGoods);
 
                     SqlParameter sqlParameterCurrency= new SqlParameter();
                     sqlParameterCurrency.ParameterName = "@Currency";

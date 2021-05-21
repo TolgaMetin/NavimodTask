@@ -34,9 +34,15 @@ html {
     font-size: 16px;
   }
 }
-
+.row-one {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.bg-cnt-colour{
+    background-color:#F3F3F3;
+}
 .border-top {
-  border-top: 1px solid #e5e5e5;
+    border-top: 1px solid #e5e5e5;
 }
 .border-bottom {
   border-bottom: 1px solid #e5e5e5;

@@ -12,7 +12,7 @@ namespace Navimod.Web.Controllers
         QuoteServices quoteServices = new QuoteServices();
         public ActionResult List()
         {
-            return View(quoteServices.Quotes.ToList());
+            return View(quoteServices.Quotes);
         }
         [HttpGet]
         public ActionResult Create()

@@ -1,0 +1,154 @@
+﻿@model IEnumerable<Navimod.Web.Models.Quote>
+
+@{
+    ViewBag.Title = "Quote List";
+}
+
+<h2>Quote List</h2>
+
+
+<table style="background-color:aqua" class="table table-bordered table table-responsive table table-striped">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Mode)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MovementType)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Incoterm)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OriginCountry)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OriginCity)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DestinationCountry)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DestinationCity)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Zip)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PackageType)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Quantity)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Weight)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.Lenght)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Width)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.Height)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UnitHeight)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UnitWeight)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CargoDescription)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IsHazardous)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IsEventCargo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IsPersonalGoods)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Currency)
+        </th>
+        <th>Action</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Mode)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MovementType)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Incoterm)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.OriginCountry)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.OriginCity)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DestinationCountry)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DestinationCity)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Zip)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PackageType)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Quantity)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Weight)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Lenght)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Width)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Height)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UnitHeight)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UnitWeight)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CargoDescription)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsHazardous)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsEventCargo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsPersonalGoods)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Currency)
+            </td>
+            <td>
+                @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+            </td>
+        </tr>
+    }
+
+</table>
