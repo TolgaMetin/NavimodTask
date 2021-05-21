@@ -1,7 +1,6 @@
 ﻿@model Quote
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
-
 }
 <form asp-controller="Quote" asp-action="Create" method="post">
     <div class="container bg-cnt-colour">
@@ -32,7 +31,7 @@
         <!--2.form group-->
         <div class="row row-one">
             <div class="col-sm-6">
-                <label class="text-info">Where are you shipping from?<i class="fas fa-info-circle"  data-toggle="tooltip" title="Where are you shipping from"></i></label>
+                <label class="text-info">Where are you shipping from?<i class="fas fa-info-circle" data-toggle="tooltip" title="Where are you shipping from"></i></label>
                 <div class="row">
                     <div class="form-group col-sm-6">
                         @Html.LabelFor(model => model.OriginCountry, htmlAttributes: new { @class = "control-label text-muted small" })
@@ -47,7 +46,7 @@
                 </div>
             </div>
             <div class="col-sm-6">
-                <label class="text-info">Where are you shipping to ?<i class="fas fa-info-circle"  data-toggle="tooltip" title="Where are you shipping to"></i></label>
+                <label class="text-info">Where are you shipping to ?<i class="fas fa-info-circle" data-toggle="tooltip" title="Where are you shipping to"></i></label>
                 <div class="row">
                     <div class="form-group col-sm-6">
                         @Html.LabelFor(model => model.DestinationCountry, htmlAttributes: new { @class = "control-label text-muted small" })
@@ -70,7 +69,7 @@
         <!--2.form group-->
         <div class="row row-one">
             <div class="col-sm-12">
-                <label class="text-info">What are you shipping?<i class="fas fa-info-circle"  data-toggle="tooltip" title="What are you shipping"></i></label>
+                <label class="text-info">What are you shipping?<i class="fas fa-info-circle" data-toggle="tooltip" title="What are you shipping"></i></label>
                 <div class="row">
                     <div class="form-group col-sm-2">
                         @Html.LabelFor(model => model.PackageType, htmlAttributes: new { @class = "control-label text-muted small" })
@@ -138,12 +137,12 @@
                         <select class="custom-select " asp-for="Currency" asp-items="Model.CurrencyList"></select>
                     </div>
                     <div class="form-check col-sm-6">
-                        <button type="submit" class="btn btn-primary btn-lg">Get Quote</button>
+                        <button type="submit" class="btn btn-primary btn-lg" style="float:right">Get Quote</button>
                     </div>
                 </div>
             </div>
         </div>
         <div>
-            @Html.ActionLink("Back to List", "List")
         </div>
+    </div>
 </form>

@@ -5,9 +5,10 @@
 }
 
 <h2>Quote List</h2>
-
-
-<table style="background-color:aqua" class="table table-bordered table table-responsive table table-striped">
+<p>
+    <a class="btn btn-success" asp-area="" asp-controller="Quote" asp-action="Create">CreateNew</a>
+</p>
+<table class="table table-bordered table-responsive table-striped">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.Mode)

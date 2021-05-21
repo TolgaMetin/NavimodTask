@@ -17,7 +17,8 @@ namespace Navimod.Web.Controllers
         [HttpGet]
         public ActionResult Create()
         {
-            return View();
+            Quote quote = new Quote();
+            return View(quote);
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -28,7 +29,7 @@ namespace Navimod.Web.Controllers
                 quoteServices.SaveQuote(quote);
                 return RedirectToAction("List");
             }
-            return View();
+            return View(quote);
 
         }
 
